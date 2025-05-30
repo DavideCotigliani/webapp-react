@@ -15,8 +15,8 @@ const HomePage = () => {
                 <div className="card-body">
                     <h3 className='text-primary'> Titolo film</h3>
                     <h4>Regista</h4>
-                    <p>Trama del film</p>
-                    <Link className='btn btn-primary' to={`/films/1`}>Leggi tutto</Link>
+                    <p>Trama</p>
+                    <Link className='btn btn-primary' to={`/movies/1`}>Leggi tutto</Link>
                 </div>
             </div>
         </>
