@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
-
+import ReviewCard from '../components/ReviewCard'
 const initialMovies = [
     {
         id: 1,
@@ -102,13 +102,7 @@ const MoviePage = () => {
                 </div>
                 {reviews.map((review) => {
                     return (
-                        <div className="col-12" key={`review ${review.id}`}>
-                            <div className="card">
-                                <h3>{review.author}</h3>
-                                <p>{review.text}</p>
-                                <p>{review.vote}</p>
-                            </div>
-                        </div>
+                        <ReviewCard review={review} key={`review-${review.id}`} />
                     )
                 })}
             </div>
