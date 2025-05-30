@@ -16,4 +16,5 @@ Fate tutto statico.
 Bonus
 Create un array finto di film da ciclare e mostrare nella homepage
 Creare la componente MovieCard in cui passare tramite props il singolo libro
+
 SUPER BONUS: Nella pagina di dettaglio del film copiate l'array dei film aggiungendo a ciascun oggetto un'array di recensioni. Trovate l'elemento all'interno dell'array da mostrare nella pagina attraverso l'id che avete passato come parametro e mostratelo in pagina assieme alle sue recensioni
