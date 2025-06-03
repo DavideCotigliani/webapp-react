@@ -18,9 +18,9 @@ const HomePage = () => {
 
     return (
         <>
-            <h1 className='text-primary'>Lista dei film</h1>
+            <h1 className='text-info'>Lista dei film</h1>
             <h2><i>La community che parla di film</i></h2>
-            <div className="row gy -4">
+            <div className="row">
                 {movies.map((movie) => {
                     return <MovieCard movie={movie} key={`movie-${movie.id}`} />
                 })}

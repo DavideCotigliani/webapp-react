@@ -46,7 +46,7 @@ const MoviePage = () => {
             <div className="row">
                 <div className="col-12">
                     <div className="d-flex justify-content-between">
-                        <h3><i>Our community reviews</i></h3>
+                        <h3><i>Le recensioni della nostra community</i></h3>
                     </div>
                 </div>
                 {movie.reviews && movie.reviews.map((review) => (
