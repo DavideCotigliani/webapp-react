@@ -12,8 +12,9 @@ const MovieCard = ({ movie }) => {
             <div className="card-body">
                 <h3 className='text-primary'> {movie.title}</h3>
                 <h4>{movie.director}</h4>
-                <p>{movie.plot}</p>
-                <Link className='btn btn-primary' to={`/movies/1`}>Leggi tutto</Link>
+                <p>{movie.genre}</p>
+                <p>{movie.abstract}</p>
+                <Link className='btn btn-primary' to={`/movies/${movie.id}`}>Leggi tutto</Link>
             </div>
         </div>
     )

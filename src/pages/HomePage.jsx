@@ -1,47 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MovieCard from '../components/MovieCard'
-
-const initialMovies = [
-    {
-        id: 1,
-        title: "Inception",
-        director: "Christopher Nolan",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 2,
-        title: "Great Gatsby",
-        director: "Luhrmann",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 3,
-        title: "Matrix",
-        director: "Wachowski",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 4,
-        title: "Nuovo Cinema Paradiso",
-        director: "Giuseppe Tornatore",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 5,
-        title: "C'era una volta in America",
-        director: "Sergio Leone",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-]
+import axios from 'axios'
 
 const HomePage = () => {
-    const [movies, setMovies] = useState(initialMovies)
+    const [movies, setMovies] = useState([])
+
+    const fetchMovie = () => {
+        axios.get("http://127.0.0.1:3000/api/movies/").then((resp) => {
+            setMovies(resp.data)
+        })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    useEffect(fetchMovie, []);
+
     return (
         <>
             <h1 className='text-primary'>Lista dei film</h1>

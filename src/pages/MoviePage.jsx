@@ -3,78 +3,26 @@ import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import ReviewCard from '../components/ReviewCard'
-const initialMovies = [
-    {
-        id: 1,
-        title: "Inception",
-        director: "Christopher Nolan",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 2,
-        title: "Great Gatsby",
-        director: "Luhrmann",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 3,
-        title: "Matrix",
-        director: "Wachowski",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 4,
-        title: "Nuovo Cinema Paradiso",
-        director: "Giuseppe Tornatore",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-    {
-        id: 5,
-        title: "C'era una volta in America",
-        director: "Sergio Leone",
-        plot: "Lorem ipsum dolor",
-        image: "https://picsum.photos/500/300",
-    },
-]
-const initialReviews = [
-    {
-        id: "1",
-        text: "lorem ipsum dolor",
-        author: "Autore recensione 1",
-        vote: 4
-    },
-    {
-        id: "2",
-        text: "lorem ipsum dolor",
-        author: "Autore recensione 2",
-        vote: 3
-    },
-    {
-        id: "3",
-        text: "lorem ipsum dolor",
-        author: "Autore recensione 3",
-        vote: 5
-    },
-]
+import axios from 'axios'
+
 const MoviePage = () => {
     const { id } = useParams();
 
-    const [movies, setMovies] = useState(initialMovies); // martedì verrà cancellato
-    const [reviews, setReviews] = useState(initialReviews) // anche questo
-
     const [movie, setMovie] = useState({});
-    // funzione per recuperare l'id passato come parametro
+
+
     const fetchMovie = () => {
-        movies.forEach((actualMovie) => {
-            if (actualMovie.id === parseInt(id)) {
-                setMovie(actualMovie);
-            }
-        });
+        axios.get(`http://127.0.0.1:3000/api/movies/${id}`).then((resp) => {
+            setMovie(resp.data);
+        })
     }
+    //metodo per numero di stelle in base al voto
+    // const renderStars = (vote) => {
+    //     return [1, 2, 3, 4, 5].map((elem, i) => {
+    //         return `<i key="star-${i}" className= "fa-solid> </i>`
+    //     })
+    // }
+
     useEffect(() => {
         fetchMovie();
     }, [])
@@ -83,12 +31,13 @@ const MoviePage = () => {
         <>
             <div className='row'>
                 <div className="col-12 col-md-6 col-lg-4 d-flex img-fluid" >
-                    <img src="https://picsum.photos/500/300" alt="Movie" />
+                    <img src={movie.image} className='img-fluid' alt="Movie" />
                     <div className="col-12 col-md-6 col-lg-8">
                         <div className="card">
                             <h1>{movie.title}</h1>
                             <h3>{movie.director}</h3>
-                            <p>{movie.plot}</p>
+                            <p>{movie.genre}</p>
+                            <p>{movie.abstract}</p>
                             <Link className='btn btn-primary' to={`/`}>Torna alla Homepage</Link>
                         </div>
                     </div>
@@ -98,13 +47,14 @@ const MoviePage = () => {
                 <div className="col-12">
                     <div className="d-flex justify-content-between">
                         <h3><i>Our community reviews</i></h3>
+                        <div>
+                            {/* {renderStars} */}
+                        </div>
                     </div>
                 </div>
-                {reviews.map((review) => {
-                    return (
-                        <ReviewCard review={review} key={`review-${review.id}`} />
-                    )
-                })}
+                {movie.reviews && movie.reviews.map((review) => (
+                    <ReviewCard review={review} key={`review-${review.id}`} />
+                ))}
             </div>
         </>
     )
