@@ -14,6 +14,7 @@ const Header = () => {
                     <li><Link >Recenti</Link></li>
                     <li><Link >Generi</Link></li>
                     <li><Link >Profilo</Link></li>
+                    <Link >Aggiungi Libro</Link>
                 </ul>
             </div>
         </nav>
