@@ -53,7 +53,7 @@ const MoviePage = () => {
                 {movie.reviews && movie.reviews.map((review) => (
                     <ReviewCard review={review} key={`review-${review.id}`} />
                 ))}
-                <ReviewForm />
+                <ReviewForm movie_id={movie.id} />
             </div>
         </>
     )

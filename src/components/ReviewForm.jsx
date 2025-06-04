@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-const ReviewForm = () => {
+const ReviewForm = ({ movie_id }) => {
     // definizione dei valori iniziali della form
     const initialData = { name: "", vote: "", text: "" };
 
@@ -18,7 +18,7 @@ const ReviewForm = () => {
     // chiamata AJAX
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`http://127.0.0.1:3000/api/movies/${id}/review`, formData, {
+        axios.post(`http://127.0.0.1:3000/api/movies/${movie_id}/review`, formData, {
             headers: { "Content-Type": "application/json" }
         }).then(() => {
             setFormData(initialData)
@@ -43,7 +43,7 @@ const ReviewForm = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="">Text
-                            <input type="text" className="form-control" name='text' placeholder='testo' value={formData.text} onChange={setFieldValue} required />
+                            <textarea type="text" className="form-control" name='text' placeholder='testo' value={formData.text} onChange={setFieldValue} required />
                         </label>
                     </div>
                     <button className='btn btn-primary'>Salva</button>
