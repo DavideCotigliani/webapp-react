@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-const ReviewForm = ({ movie_id }) => {
+const ReviewForm = ({ movie_id, reloadReviews }) => {
     // definizione dei valori iniziali della form
     const initialData = { name: "", vote: "", text: "" };
 
@@ -21,7 +21,8 @@ const ReviewForm = ({ movie_id }) => {
         axios.post(`http://127.0.0.1:3000/api/movies/${movie_id}/review`, formData, {
             headers: { "Content-Type": "application/json" }
         }).then(() => {
-            setFormData(initialData)
+            setFormData(initialData);
+            reloadReviews();
         })
     }
     return (

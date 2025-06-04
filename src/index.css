@@ -25,3 +25,17 @@ ul {
     width: auto;
     height: 40px;
 }
+
+.dropdown-menu {
+    background-color: #212529 !important;
+    border: none;
+}
+
+.dropdown-item {
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background-color: #343a40;
+    color: #fff;
+}

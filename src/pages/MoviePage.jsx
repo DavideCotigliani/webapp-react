@@ -17,12 +17,6 @@ const MoviePage = () => {
             setMovie(resp.data);
         })
     }
-    //metodo per numero di stelle in base al voto
-    // const renderStars = (vote) => {
-    //     return [1, 2, 3, 4, 5].map((elem, i) => {
-    //         return `<i key="star-${i}" className= "fa-solid> </i>`
-    //     })
-    // }
 
     useEffect(() => {
         fetchMovie();
@@ -53,7 +47,7 @@ const MoviePage = () => {
                 {movie.reviews && movie.reviews.map((review) => (
                     <ReviewCard review={review} key={`review-${review.id}`} />
                 ))}
-                <ReviewForm movie_id={movie.id} />
+                <ReviewForm movie_id={movie.id} reloadReviews={fetchMovie} />
             </div>
         </>
     )
