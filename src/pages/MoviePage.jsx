@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import ReviewCard from '../components/ReviewCard'
 import axios from 'axios'
+import ReviewForm from '../components/ReviewForm'
 
 const MoviePage = () => {
     const { id } = useParams();
@@ -52,6 +53,7 @@ const MoviePage = () => {
                 {movie.reviews && movie.reviews.map((review) => (
                     <ReviewCard review={review} key={`review-${review.id}`} />
                 ))}
+                <ReviewForm />
             </div>
         </>
     )

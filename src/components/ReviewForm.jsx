@@ -14,6 +14,7 @@ const ReviewForm = () => {
         const { value, name } = e.target;
         setFormData({ ...formData, [name]: value })
     }
+
     // chiamata AJAX
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,31 +25,28 @@ const ReviewForm = () => {
         })
     }
     return (
-        <div className='card'>
+        <div className='card mt-3'>
             <div className="card-header">
                 <h4>Aggiungi la tua recensione</h4>
             </div>
             <div className="card-body">
-                <form >
+                <form onSubmit={handleSubmit} >
                     <div className="form-group">
                         <label htmlFor="">Name
-                            <input type="text" className="form-control" name='name' placeholder='nome' value={formData.name} required />
+                            <input type="text" className="form-control" name='name' placeholder='nome' value={formData.name} onChange={setFieldValue} required />
                         </label>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Name
-                            <input type="text" className="form-control" name='name' placeholder='nome' required />
+                        <label htmlFor="">Vote
+                            <input type="text" className="form-control" name='vote' placeholder='voto' value={formData.vote} onChange={setFieldValue} required />
                         </label>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Name
-                            <input type="text" className="form-control" name='vote' placeholder='voto' required />
+                        <label htmlFor="">Text
+                            <input type="text" className="form-control" name='text' placeholder='testo' value={formData.text} onChange={setFieldValue} required />
                         </label>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="">Testo</label>
-                        <textarea name="text" id=""></textarea>
-                    </div>
+                    <button className='btn btn-primary'>Salva</button>
                 </form>
             </div>
         </div>
