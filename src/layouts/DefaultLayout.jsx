@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Outlet } from 'react-router-dom'
-import Header from '../components/Header'
+import Header from '../components/Header';
+import GlobalContext from '../contexts/globalContext';
+import { useContext } from 'react';
+import Loader from '../components/Loader';
 
 const DefaultLayout = () => {
+    const { isLoading } = useContext(GlobalContext) //consumando il contesto
     return (
         <>
             <header>
@@ -11,6 +15,7 @@ const DefaultLayout = () => {
             <main className='container-fluid'>
                 <Outlet />
             </main >
+            {isLoading && <Loader />}
         </>
     )
 }
