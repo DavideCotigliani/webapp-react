@@ -9,17 +9,21 @@ import GlobalContext from '../contexts/globalContext'
 
 const MoviePage = () => {
     const { id } = useParams();
-    setIsLoading(true)
     const [movie, setMovie] = useState({});
     const { setIsLoading } = useContext(GlobalContext)
 
     const fetchMovie = () => {
+        setIsLoading(true)
         axios.get(`http://127.0.0.1:3000/api/movies/${id}`).then((resp) => {
             setTimeout(() => {
                 setMovie(resp.data);
                 setIsLoading(false)
             }, 2000)
         })
+            .catch(err => {
+                console.error("Errore nel caricamento del film:", err)
+                setIsLoading(false)
+            })
     }
 
     useEffect(() => {

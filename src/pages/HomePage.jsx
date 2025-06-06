@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import MovieCard from '../components/MovieCard'
 import axios from 'axios'
-import Loader from '../components/Loader'
 import GlobalContext from '../contexts/globalContext'
 
 const HomePage = () => {
@@ -25,7 +24,6 @@ const HomePage = () => {
 
     return (
         <>
-            <Loader></Loader>
             <h1 className='text-info'>Lista dei film</h1>
             <h2><i>La community che parla di film</i></h2>
             <div className="row">
